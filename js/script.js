@@ -22,3 +22,20 @@ function getParams(params) {
 }
 
 params.forEach(getParams);
+
+// Ativar accordion de perguntas mais recentes
+
+const perguntas = document.querySelectorAll(".perguntas button");
+
+function ativarPergunta(event) {
+	const pergunta = event.currentTarget;
+	const controls = pergunta.getAttribute("aria-controls");
+	const resposta = document.getElementById(controls);
+	resposta.classList.toggle("ativo");
+	const ativo = resposta.classList.contains("ativo");
+	pergunta.setAttribute("aria-expanded", ativo);
+}
+
+perguntas.forEach((pergunta) => {
+	pergunta.addEventListener("click", ativarPergunta);
+});
