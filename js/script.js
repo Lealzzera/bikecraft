@@ -39,3 +39,18 @@ function ativarPergunta(event) {
 perguntas.forEach((pergunta) => {
 	pergunta.addEventListener("click", ativarPergunta);
 });
+
+// Manipulação das imagens
+
+const bicicletasFotos = document.querySelectorAll(".bicicleta-imagens img");
+const bicicletasGaleria = document.querySelector(".bicicleta-imagens");
+
+function ativarFoto(event) {
+	const imagem = event.currentTarget;
+	const media = matchMedia("(min-width: 1000px)").matches;
+	if (media) bicicletasGaleria.prepend(imagem);
+}
+
+bicicletasFotos.forEach((foto) => {
+	foto.addEventListener("click", ativarFoto);
+});
